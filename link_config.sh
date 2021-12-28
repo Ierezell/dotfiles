@@ -20,8 +20,8 @@ ln -s ${SCRIPT_FOLDER}/home/vimrc ~/.vimrc
 mkdir -p ~/.config/nvim
 rm -f ~/.config/nvim/init.vim
 ln -s ${SCRIPT_FOLDER}/home/config/nvim/init.vim ~/.config/nvim/init.vim
-sh -c 'curl -fLo "${XDG_DATA_HOME:-$HOME/.local/share}"/nvim/site/autoload/plug.vim --create-dirs https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim'
-# nvim +'PlugInstall --sync' +qa
+curl -fLo "${XDG_DATA_HOME:-$HOME/.local/share}"/nvim/site/autoload/plug.vim --create-dirs https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
+nvim +'PlugInstall --sync' +qa
 
 # VSCode config
 mkdir -p ~/.config/Code/User
@@ -73,3 +73,21 @@ fi
 # Zshrc config
 rm -f ~/.zshrc
 ln -s ${SCRIPT_FOLDER}/home/zshrc ~/.zshrc
+
+rm -f ~/.zshenv
+ln -s ${SCRIPT_FOLDER}/home/zshenv ~/.zshenv
+
+rm -f ~/.zprofile
+ln -s ${SCRIPT_FOLDER}/home/zprofile ~/.zprofile
+
+rm -f ~/.zpreztorc
+ln -s ${SCRIPT_FOLDER}/home/zpreztorc ~/.zpreztorc
+
+rm -f ~/.zlogout
+ln -s ${SCRIPT_FOLDER}/home/zlogout ~/.zlogout
+
+rm -f ~/.zlogin
+ln -s ${SCRIPT_FOLDER}/home/zlogin ~/.zlogin
+
+
+
