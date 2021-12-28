@@ -1,0 +1,150 @@
+########################
+# Starx if not started #
+########################
+
+#if [ -z "${DISPLAY}" ] && [ "${XDG_VTNR}" -eq 1 ]; then
+#  exec startx
+#fi
+
+###########
+# Zprezto #
+###########
+
+if [[ -s "${ZDOTDIR:-$HOME}/.zprezto/init.zsh" ]]; then
+  source "${ZDOTDIR:-$HOME}/.zprezto/init.zsh"
+fi
+
+###############
+# Zsh vi mode #
+###############
+bindkey -v # Vim mode
+
+###########
+# Exports #
+###########
+export PATH="${PATH}:${HOME}/.local/bin"
+export EDITOR='nvim'
+export VISUAL=$EDITOR
+export PAGER='less'
+export SHELL='/bin/zsh'
+export LANG='fr_FR.UTF-8'
+export LC_ALL='fr_FR.UTF-8'
+
+# LS COLORS
+# source ~/.cache/wal/colors.sh
+
+###########
+# Aliases #
+###########
+alias cs='cht.sh'
+alias pip_upgrade="pip3 list --format=freeze | grep -v '^\-e' | cut -d = -f 1 | xargs -n1 pip3 install -U"
+# CDs
+alias cdd='cd /mnt/Documents'
+alias cdp='cd /mnt/Documents/Projets'
+alias cdg='cd /mnt/Documents/Projets/git_clones'
+
+alias cdbp='cd /mnt/Documents/Projets/BotPress/botpress'
+alias cdrd='cd /mnt/Documents/Projets/BotPress/R_D'
+
+# Yarn starts
+alias ysbp='cd /mnt/Documents/Projets/BotPress/botpress && yarn start'
+alias ybbp='cd /mnt/Documents/Projets/BotPress/botpress && GULP_PARALLEL=true yarn build'
+alias ybbpp='cd /mnt/Documents/Projets/BotPress/botpress && yarn build'
+alias ysls='cd /mnt/Documents/Projets/BotPress/botpress && yarn start lang --dim=300'
+alias ysduck='cd /mnt/Documents/Projets/git_clones/duckling && stack exec duckling-example-exe'
+alias ysnlu='cd /mnt/Documents/Projets/BotPress/botpress && yarn start nlu --languageURL=http://localhost:3100 --ducklingURL=http://localhost:8000/ --modelCacheSize=1gb  --body-size=900kb'
+
+# Commands 
+alias runpret="cd /mnt/Documents/Projets/BotPress/botpress && node ./node_modules/prettier/bin-prettier.js --check '{src,modules}/**/*.ts' '!**/*.d.ts'"
+alias ls="ls --color=auto"
+alias la="ls -a --color=auto"
+alias ll="ls -lh --color=auto"
+alias lla="ls -lha --color=auto"
+alias zshupdate="zinit self-update && zinit update"
+
+alias nova='cd /mnt/Documents/Projets/git_clones/projet_novascience/NLP && jupyter-notebook'
+###########
+# History #
+###########
+HISTFILE=~/.histfile
+HISTSIZE=1000
+SAVEHIST=1000
+
+setopt hist_expire_dups_first # delete duplicates first when HISTFILE size exceeds HISTSIZE
+setopt hist_ignore_all_dups   # ignore duplicated commands history list
+setopt hist_ignore_space      # ignore commands that start with space
+setopt hist_verify            # show command with history expansion to user before running it
+setopt share_history          # share command history data
+setopt inc_append_history     # add commands to HISTFILE in order of execution
+
+
+. ~/.cache/wal/colors.sh # For LSCOLORS in terminal
+##############
+# Completion #
+##############
+zstyle ':completion:*' menu select
+zstyle ':completion:*' group-name '' # group results by category
+zstyle ':completion:*' matcher-list 'm:{a-z}={A-Za-z}' # Ignore case
+zstyle ':completion:::::' completer _expand _complete _ignored _approximate #enable approximate matches for completion
+zstyle ':completion:*:default' list-colors ${(s.:.)LS_COLORS}
+
+setopt auto_cd # cd by typing directory name if it's not a command
+setopt correct_all # autocorrect commands
+setopt auto_list # automatically list choices on ambiguous completion
+setopt auto_menu # automatically use menu completion
+setopt list_ambiguous         # complete as much of a completion until it gets ambiguous.
+setopt complete_in_word       # allow completion from within a word/phrase
+
+setopt promptsubst
+
+################
+# Fix keyboard #
+################
+# create a zkbd compatible hash;
+# to add other keys to this hash, see: man 5 terminfo
+typeset -g -A key
+
+key[Home]="${terminfo[khome]}"
+key[End]="${terminfo[kend]}"
+key[Insert]="${terminfo[kich1]}"
+key[Backspace]="${terminfo[kbs]}"
+key[Delete]="${terminfo[kdch1]}"
+key[Up]="${terminfo[kcuu1]}"
+key[Down]="${terminfo[kcud1]}"
+key[Left]="${terminfo[kcub1]}"
+key[Right]="${terminfo[kcuf1]}"
+key[PageUp]="${terminfo[kpp]}"
+key[PageDown]="${terminfo[knp]}"
+key[Shift-Tab]="${terminfo[kcbt]}"
+
+# setup key accordingly
+[[ -n "${key[Home]}"      ]] && bindkey -- "${key[Home]}"       beginning-of-line
+[[ -n "${key[End]}"       ]] && bindkey -- "${key[End]}"        end-of-line
+[[ -n "${key[Insert]}"    ]] && bindkey -- "${key[Insert]}"     overwrite-mode
+[[ -n "${key[Backspace]}" ]] && bindkey -- "${key[Backspace]}"  backward-delete-char
+[[ -n "${key[Delete]}"    ]] && bindkey -- "${key[Delete]}"     delete-char
+[[ -n "${key[Up]}"        ]] && bindkey -- "${key[Up]}"         up-line-or-history
+[[ -n "${key[Down]}"      ]] && bindkey -- "${key[Down]}"       down-line-or-history
+[[ -n "${key[Left]}"      ]] && bindkey -- "${key[Left]}"       backward-char
+[[ -n "${key[Right]}"     ]] && bindkey -- "${key[Right]}"      forward-char
+[[ -n "${key[PageUp]}"    ]] && bindkey -- "${key[PageUp]}"     beginning-of-buffer-or-history
+[[ -n "${key[PageDown]}"  ]] && bindkey -- "${key[PageDown]}"   end-of-buffer-or-history
+[[ -n "${key[Shift-Tab]}" ]] && bindkey -- "${key[Shift-Tab]}"  reverse-menu-complete
+
+# Finally, make sure the terminal is in application mode, when zle is
+# active. Only then are the values from $terminfo valid.
+if (( ${+terminfo[smkx]} && ${+terminfo[rmkx]} )); then
+	autoload -Uz add-zle-hook-widget
+	function zle_application_mode_start { echoti smkx }
+	function zle_application_mode_stop { echoti rmkx }
+	add-zle-hook-widget -Uz zle-line-init zle_application_mode_start
+	add-zle-hook-widget -Uz zle-line-finish zle_application_mode_stop
+fi
+
+###########
+# Sources #
+###########
+source /usr/share/nvm/init-nvm.sh
+#fpath=(~/.zsh.d/ $fpath)
+
+export PATH="$HOME/.poetry/bin:$PATH"
