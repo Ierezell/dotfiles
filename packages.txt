@@ -21,6 +21,7 @@ bluez-utils
 python-pywal
 ntfs-3g
 alsa-utils
+sof-firmware
 pulseaudio
 pulseaudio-alsa
 pulseaudio-bluetooth
@@ -31,4 +32,5 @@ redshift
 tlp
 tlp_smapi
 acpi_call
-
+htop
+tlp

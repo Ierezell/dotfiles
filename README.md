@@ -6,5 +6,6 @@ My config for an archlinux + i3 setup
 
 - [ ] Micro code for intel 
 - [ ] Better power management
-- [ ] Fonts
-- [ ] 
+
+#### Optional : 
+Change refind theme for https://github.com/bobafetthotmail/refind-theme-regular

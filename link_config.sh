@@ -1,10 +1,5 @@
 SCRIPT_FOLDER="$( cd -- "$(dirname "$0")" >/dev/null 2>&1 ; pwd -P )"
 
-# Auto login
-sudo mkdir -p /etc/systemd/system/getty@tty1.service.d/
-sudo rm -f /etc/systemd/system/getty@tty1.service.d/override.conf
-sudo ln -s ${SCRIPT_FOLDER}/etc/systemd/system/getty@tty1.service.d/override.conf /etc/systemd/system/getty@tty1.service.d/override.conf
-
 # Xorg
 rm -rf ~/.xinitrc
 ln -s ${SCRIPT_FOLDER}/home/xinitrc ~/.xinitrc
@@ -88,6 +83,3 @@ ln -s ${SCRIPT_FOLDER}/home/zlogout ~/.zlogout
 
 rm -f ~/.zlogin
 ln -s ${SCRIPT_FOLDER}/home/zlogin ~/.zlogin
-
-
-
