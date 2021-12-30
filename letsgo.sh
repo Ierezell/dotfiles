@@ -23,5 +23,8 @@ sudo bash -c 'echo "ExecStart=-/usr/bin/agetty --autologin ${USER} --noclear %I 
 
 # Enable services 
 sudo systemctl enable tlp
+sudo systemctl enable bluetooth
+
 sudo bash -c 'echo "START_CHARGE_THRESH_BAT0=75" > /etc/tlp.conf'
 sudo bash -c 'echo "STOP_CHARGE_THRESH_BAT0=80" >> /etc/tlp.conf'
+

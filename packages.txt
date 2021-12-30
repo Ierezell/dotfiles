@@ -34,3 +34,6 @@ tlp_smapi
 acpi_call
 htop
 tlp
+breeze
+dolphin
+android-file-transfer
