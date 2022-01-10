@@ -38,30 +38,15 @@ zstyle ':prezto:load' pmodule \
   'directory' \
   'spectrum' \
   'utility' \
+  'archive' \
+  'git' \
+  'ssh' \
   'completion' \
+  'fasd' \
+  'syntax-highlighting' \
   'history-substring-search' \
-  'prompt'
-#
-#  'environment' \
-#  'archive' \
-#  'terminal' \
-#  'editor' \
-#  'history' \
-#  'directory' \
-#  'spectrum' \
-#  'git' \
-#  'node' \
-#  'utility' \
-#  'completion' \
-#  'syntax-highlighting' \ 
-#  'history-substring-search' \
-#  'autosuggestions' \
-#  'fasd' \
-#  'command-not-found' \
-#  'pacman' \
-#  'rsync' \
-#  'ssh' \
-#  'prompt'
+  'autosuggestions' \
+  'prompt' \
 
 #
 # Autosuggestions
@@ -83,7 +68,7 @@ zstyle ':prezto:load' pmodule \
 #
 
 # Set the key mapping style to 'emacs' or 'vi'.
-zstyle ':prezto:module:editor' key-bindings 'vi'
+# zstyle ':prezto:module:editor' key-bindings 'vi'
 
 # Auto convert .... to ../..
 zstyle ':prezto:module:editor' dot-expansion 'yes'

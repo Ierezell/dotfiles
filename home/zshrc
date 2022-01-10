@@ -10,10 +10,6 @@
 # Zprezto #
 ###########
 
-if [[ -s "${ZDOTDIR:-$HOME}/.zprezto/init.zsh" ]]; then
-  source "${ZDOTDIR:-$HOME}/.zprezto/init.zsh"
-fi
-
 ###############
 # Zsh vi mode #
 ###############
@@ -31,7 +27,7 @@ export LANG='fr_FR.UTF-8'
 export LC_ALL='fr_FR.UTF-8'
 
 # LS COLORS
-# source ~/.cache/wal/colors.sh
+source ~/.cache/wal/colors.sh
 
 ###########
 # Aliases #
@@ -148,3 +144,5 @@ source /usr/share/nvm/init-nvm.sh
 #fpath=(~/.zsh.d/ $fpath)
 
 export PATH="$HOME/.poetry/bin:$PATH"
+
+source "${ZDOTDIR:-$HOME}/.zprezto/init.zsh"
