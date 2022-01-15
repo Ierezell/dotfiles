@@ -37,3 +37,7 @@ tlp
 breeze
 dolphin
 android-file-transfer
+jmtpfs
+libmtp
+arc-icon-theme
+arc-gtk-theme

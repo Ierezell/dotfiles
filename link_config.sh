@@ -7,6 +7,9 @@ ln -s ${SCRIPT_FOLDER}/home/xinitrc ~/.xinitrc
 rm -f ~/.zprofile
 ln -s ${SCRIPT_FOLDER}/home/zprofile ~/.zprofile
 
+rm -f ~/.gtkrc-2.0
+ln -s ${SCRIPT_FOLDER}/home/gtkrc-2.0 ~/.gtkrc-2.0
+
 # Vim
 rm -f ~/.vimrc
 ln -s ${SCRIPT_FOLDER}/home/vimrc ~/.vimrc
