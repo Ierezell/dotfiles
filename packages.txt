@@ -14,7 +14,7 @@ xorg-xrandr
 i3-gaps
 rofi
 feh
-picom
+picom-git
 blueman
 bluez
 bluez-utils
@@ -30,7 +30,6 @@ wpa_supplicant
 network-manager-applet
 redshift
 tlp
-tlp_smapi
 acpi_call
 htop
 tlp
@@ -39,5 +38,8 @@ dolphin
 android-file-transfer
 jmtpfs
 libmtp
+adobe-source-code-pro-fonts
+awesome-terminal-fonts
 arc-icon-theme
 arc-gtk-theme
+sddm
