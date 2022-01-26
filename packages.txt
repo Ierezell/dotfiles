@@ -15,7 +15,7 @@ i3-gaps
 rofi
 feh
 picom-git
-blueman
+blueman-git
 bluez
 bluez-utils
 python-pywal

@@ -8,7 +8,7 @@ while pgrep -u $UID -x polybar >/dev/null; do sleep 1; done
 
 # Launch Polybar, using default config location ~/.config/polybar/config
 # python ~/.config/polybar/scripts/spotify/launch_listener.py &
-polybar ArchBar &
+DEFAULT_NETWORK_INTERFACE=$(ip route | grep '^default' | awk '{print $5}' | head -n1) polybar ArchBar &
 nm-applet &
 blueman-applet &
 echo "Polybar launched..."

@@ -371,6 +371,6 @@ for_window [class="^.*"] border pixel 1 # Disable title bars
 exec setxkbmap -option caps:swapescape & # Swap ESC and MAJ
 exec_always --no-startup-id dunst &
 exec_always picom -b & # Fading and transparency (check .config/picom)
-exec_always xrandr --output $ecran --auto --output $ecran2 --mode 1920x1080 --above $ecran & # Place the second screen on the right of the laptop one
+exec_always xrandr --output $ecran --auto --output $ecran2 --mode 1920x1080 --right-of $ecran & # Place the second screen on the right of the laptop one
 exec_always ~/.config/polybar/launch.sh & # Launch the Bar
 exec_always wal -i ~/dotfiles/Wallpapers/1920_1080 --saturate 0.6 & # Set wallpapers and all desktop color (from wallpaper colors)
